@@ -1,0 +1,3 @@
+## ignore all zipfiles except template
+*.zip
+!template/*.zip
