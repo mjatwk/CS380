@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.vshader": "glsl",
+        "iostream": "cpp"
+    }
+}
