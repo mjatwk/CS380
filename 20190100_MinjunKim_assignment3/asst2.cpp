@@ -606,10 +606,20 @@ static void motion(const int x, const int y) {
     m = RigTForm(Quat(0, normalize(v2)) * Quat(0, normalize(-v1)));                                                             
   }
   else if (g_mouseRClickButton && !g_mouseLClickButton) { // right button down?
-    m = RigTForm(Cvec3(dx, dy, 0) * g_arcballScale);
+    if (g_ocount % 3 == g_vcount % 3 && g_ocount % 3 == 0 && g_mcount % 2 == 1) {
+      // perform ego motion - arcball not in use
+      m = RigTForm(Cvec3(dx, dy, 0) * 0.01);
+    } else {
+      m = RigTForm(Cvec3(dx, dy, 0) * g_arcballScale);
+    }
   }
   else if (g_mouseMClickButton || (g_mouseLClickButton && g_mouseRClickButton)) {  // middle or (left and right) button down?
-    m = RigTForm(Cvec3(0, 0, -dy) * g_arcballScale);
+    if (g_ocount % 3 == g_vcount % 3 && g_ocount % 3 == 0 && g_mcount % 2 == 1) {
+      // perform ego motion - arcball not in use
+      m = RigTForm(Cvec3(dx, dy, 0) * 0.01);
+    } else {
+      m = RigTForm(Cvec3(0, 0, -dy) * g_arcballScale);
+    }
   }
 
   if (g_mouseClickDown) {
