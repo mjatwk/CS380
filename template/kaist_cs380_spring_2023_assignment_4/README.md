@@ -1,8 +1,8 @@
-Introduction to Computer Graphics (Spring 2023) - Assignment 2
+Introduction to Computer Graphics (Spring 2023) - Assignment 4
 =====
 Instructor: Minhyuk Sung (mhsung@kaist.ac.kr)
 
-Last Update: Mar. 22, 2023 by Juil Koo (63days@kaist.ac.kr)
+Last Update: Apr. 3, 2023 by Hyunjin Kim (rlaguswls98@kaist.ac.kr)
 
 ## Install Libraries
 In the programming assignments of this course, **GLUT** and **OpenGL** libraries are required to compile code. Please follow one of the installation instructions below according to your OS.
@@ -51,6 +51,11 @@ If you use a non-intel Mac and you have already installed GLEW before through br
 ```shell
 $ brew uninstall glew
 ```
+
+## Copy assignment 4 files into assignment 3 directory
+
+The basis of assignment 4 is assignment 3. You have to copy files in assignment 4 into assignment 3 directory. Also, you have to change the filename asstX.cpp to asst4.cpp.
+
 
 ## Compile and execute assignment code
 

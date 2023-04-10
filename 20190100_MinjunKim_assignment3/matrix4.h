@@ -277,13 +277,52 @@ inline Matrix4 normalMatrix(const Matrix4& m) {
   return transpose(invm);
 }
 
+// A = TL (affine matrix M = transFact(M) * linFact(M))
+
 inline Matrix4 transFact(const Matrix4& m) {
-  // TODO
+  // a translational factor of M
+  Matrix4 trans;
+  float a[16] = {1, 0, 0, m[3], 0, 1, 0, m[7], 0, 0, 1, m[11], 0, 0, 0, 1};
+  for (int i = 0; i < 16; i++)
+  {
+    trans[i] = a[i];
+  }
+  return trans;
 }
 
 inline Matrix4 linFact(const Matrix4& m) {
-  // TODO
+  // a linear factor of M
+  Matrix4 lin;
+  float a[16] = {m[0], m[1], m[2], 0, m[4], m[5], m[6], 0, m[8], m[9], m[10], 0, 0, 0, 0, 1};
+  for (int i = 0; i < 16; i++)
+  {
+    lin[i] = a[i];
+  }
+  return lin;
 }
+
+// -- CUSTOM FUNCTION FROM HERE -- //
+
+// from ppt
+// do M to O with respect to A
+static Matrix4 doMtoOwrtA(const Matrix4& M, const Matrix4& O, const Matrix4& A) {
+  return A * M * inv(A) * O;
+}
+
+// from ppt 
+// make affine matrix A 
+static Matrix4 makeMixedFrame(const Matrix4& O, const Matrix4& E) {
+  return transFact(O) * linFact(E);
+}
+
+// softbind function for matrix4 type
+void softBind_mt4(const Matrix4 &from, Matrix4 &to) {
+  for (int i = 0; i < 16; i++) {
+    to[i] = from[i];
+  }
+  return;
+}
+
 
 #endif
 

@@ -173,4 +173,23 @@ typedef Cvec <unsigned char, 2> Cvec2ub;
 typedef Cvec <unsigned char, 3> Cvec3ub;
 typedef Cvec <unsigned char, 4> Cvec4ub;
 
+// -- CUSTOM FUNCTION FROM HERE -- //
+
+// softbind function for cvec3 type
+void softBind_cvec3(const Cvec3 &from, Cvec3 &to) {
+  for (int i = 0; i < 3; i++)
+  {
+    to[i] = from[i];
+  }
+  return;
+}
+
+// softbind function for cvec4 type
+void softBind_cvec4(const Cvec4 &from, Cvec4 &to) { 
+  for (int i = 0; i < 4; i++) {
+    to[i] = from[i];
+  }
+  return;
+}
+
 #endif
