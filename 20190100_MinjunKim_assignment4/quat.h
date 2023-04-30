@@ -86,6 +86,14 @@ public:
     return Cvec4(r[1], r[2], r[3], a[3]);
   }
 
+  // custom multiply with Cvec3
+  Cvec3 operator*(const Cvec3 &a) const
+  {
+    const Cvec4 b = Cvec4(a[0], a[1], a[2], 0);
+    const Cvec4 c = *this * b;
+    return Cvec3(c[0], c[1], c[2]);
+  }
+
   static Quat makeXRotation(const double ang) {
     Quat r;
     const double h = 0.5 * ang * CS380_PI/180;
@@ -152,6 +160,16 @@ inline Matrix4 quatToMatrix(const Quat& q) {
 
   assert(isAffine(r));
   return r;
+}
+
+// -- CUSTOM FUNCTION FROM HERE -- //
+
+// softbind function for quat type
+inline void softBind_quat(const Quat &from, Quat &to) {
+  for (int i = 0; i < 4; i++) {
+    to(i) = from(i);
+  }
+  return;
 }
 
 #endif

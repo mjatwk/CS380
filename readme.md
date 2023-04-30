@@ -15,6 +15,16 @@ make clean && make        # recompile the code
 ./asst{assignment number} # execute the binary file
 ```
 
+for solution binaries in mac
+```shell
+chmod +x asst2_{intel,arm}_mac
+xattr -d com.apple.quarantine asst2_{intel,arm}_mac
+./asst2_{intel,arm}_mac
+```
+
+### Incorrect parts of Assignments
+- asst2 : the translation direction of the case when the view and manipulated object is identical is incorrect; the camera should elevate while clicking right-click and move upwards, when view and manipulated object is both camera
+
 [Website]: https://mhsung.github.io/kaist-cs380-spring-2023/
 [Campuswire]: https://campuswire.com/c/G7A5A8CF5/feed
 [Gradescope]: https://www.gradescope.com/courses/515340
